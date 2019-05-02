@@ -30,6 +30,7 @@ type Middleware struct {
 	Compress          *Compress          `json:"compress,omitempty" label:"allowEmpty"`
 	PassTLSClientCert *PassTLSClientCert `json:"passTLSClientCert,omitempty"`
 	Retry             *Retry             `json:"retry,omitempty"`
+	LuaScript         *LuaScript         `json:"lua,omitempty"`
 }
 
 // +k8s:deepcopy-gen=true
@@ -386,4 +387,11 @@ type ClientTLS struct {
 	Cert               string `description:"TLS cert" json:"cert,omitempty"`
 	Key                string `description:"TLS key" json:"key,omitempty"`
 	InsecureSkipVerify bool   `description:"TLS insecure skip verify" json:"insecureSkipVerify,omitempty"`
+}
+
+// +k8s:deepcopy-gen=true
+
+// LuaScript config
+type LuaScript struct {
+	Script string `json:"script,omitempty"`
 }

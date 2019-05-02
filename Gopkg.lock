@@ -1628,6 +1628,19 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:2e00e00efb04feefd38ffe2ab48b98b0cda0bc04109efa1c081017dd550e1747"
+  name = "github.com/yuin/gopher-lua"
+  packages = [
+    ".",
+    "ast",
+    "parse",
+    "pm",
+  ]
+  pruneopts = "NUT"
+  revision = "8bfc7677f583b35a5663a9dd934c08f3b5774bbb"
+
+[[projects]]
+  branch = "master"
   digest = "1:30c1930f8c9fee79f3af60c8b7cd92edd12a4f22187f5527d53509b1a794f555"
   name = "golang.org/x/crypto"
   packages = [
@@ -2262,6 +2275,8 @@
     "github.com/vulcand/oxy/roundrobin",
     "github.com/vulcand/oxy/utils",
     "github.com/vulcand/predicate",
+    "github.com/yuin/gopher-lua",
+    "github.com/yuin/gopher-lua/parse",
     "golang.org/x/net/http/httpguts",
     "golang.org/x/net/http2",
     "golang.org/x/net/http2/hpack",

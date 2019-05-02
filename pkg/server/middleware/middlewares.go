@@ -18,6 +18,7 @@ import (
 	"github.com/containous/traefik/pkg/middlewares/customerrors"
 	"github.com/containous/traefik/pkg/middlewares/headers"
 	"github.com/containous/traefik/pkg/middlewares/ipwhitelist"
+	"github.com/containous/traefik/pkg/middlewares/luascript"
 	"github.com/containous/traefik/pkg/middlewares/maxconnection"
 	"github.com/containous/traefik/pkg/middlewares/passtlsclientcert"
 	"github.com/containous/traefik/pkg/middlewares/ratelimiter"
@@ -299,6 +300,16 @@ func (b *Builder) buildConstructor(ctx context.Context, middlewareName string, c
 		}
 		middleware = func(next http.Handler) (http.Handler, error) {
 			return stripprefixregex.New(ctx, next, *config.StripPrefixRegex, middlewareName)
+		}
+	}
+
+	// LuaScript
+	if config.LuaScript != nil {
+		if middleware != nil {
+			return nil, badConf
+		}
+		middleware = func(next http.Handler) (http.Handler, error) {
+			return luascript.New(ctx, next, *config.LuaScript, middlewareName)
 		}
 	}
 
